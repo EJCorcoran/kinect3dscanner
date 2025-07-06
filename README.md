@@ -73,48 +73,13 @@ This demonstrates the complete point cloud processing pipeline without requiring
 ```bash
 dotnet run --project src/Scanner.UI/Scanner.UI.csproj
 ```
-4. **Process**: Clean and merge point clouds
-5. **Export**: Generate 3D files for printing
 
-## Current Status
+## Demo Files Output
 
-**✅ Core Infrastructure Complete:**
-- ✅ Project structure and solution setup
-- ✅ Point cloud processing algorithms  
-- ✅ Mesh generation service
-- ✅ File export functionality (STL, PLY, OBJ)
-- ✅ Basic WPF UI framework
-
-**🔧 Azure Kinect Integration:**
-- ⚠️ Requires Azure Kinect SDK installation
-- ⚠️ Projects must be built with x64 platform
-- ⚠️ Azure Kinect hardware required for testing
-
-## Quick Start (Without Hardware)
-
-🚀 **Try the demo without Azure Kinect hardware:**
-
-```bash
-# Build and run the demo
-dotnet run --project demo\PointCloudDemo --configuration Release
-```
-
-This demo generates a sample point cloud (simulating Kinect data), processes it through the full pipeline, and exports 3D files:
-- `output/pointcloud.ply` - Point cloud data
-- `output/mesh.stl` - 3D printable mesh  
-- `output/mesh.obj` - 3D model with materials
-
-You can explore the core algorithms and processing without the Azure Kinect hardware:
-
-```bash
-# Build core processing libraries individually
-dotnet build src\PointCloudProcessor --configuration Release
-dotnet build src\MeshGenerator --configuration Release
-dotnet build src\FileExporter --configuration Release
-
-# Run unit tests
-dotnet test tests\KinectCore.Tests
-```
+When you run the demo, it creates these files in the `output/` directory:
+- `pointcloud.ply` - Point cloud data (viewable in CloudCompare, MeshLab)
+- `mesh.stl` - 3D printable mesh (for slicers like PrusaSlicer, Cura)  
+- `mesh.obj` - 3D model with materials (for Blender, Maya, etc.)
 
 ## Build Requirements
 
@@ -208,3 +173,29 @@ dotnet build --configuration Release --property:Platform=x64
 # Clean rebuild
 .\BuildAll.ps1 -Clean
 ```
+
+## Troubleshooting
+
+### Common Build Issues
+
+**Platform Target Error**: If you see "Azure Kinect only supports the x86/x64 platform ('AnyCPU' not supported)":
+```bash
+# Build with explicit platform
+dotnet build --runtime win-x64 --configuration Debug
+```
+
+**Missing Azure Kinect SDK**: Core processing works without the SDK. Only full WPF app requires it.
+
+**Build Script Issues**: Use the enhanced build script for complex builds:
+```bash
+.\BuildAll.ps1 -Clean -Test -Demo
+```
+
+### Runtime Issues
+
+**No Azure Kinect Device**: The demo works without hardware. For real scanning, ensure:
+- Azure Kinect DK is connected via USB 3.0
+- Azure Kinect SDK is installed
+- Device drivers are properly installed
+
+**File Output Location**: Generated files are in `output/` directory relative to execution path.

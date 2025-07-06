@@ -17,7 +17,10 @@ namespace KinectCore.Services
 
         public event EventHandler<ScanFrame>? FrameCaptured;
         public event EventHandler<string>? ErrorOccurred;
+        
+#pragma warning disable CS0067 // Event is never used - part of public interface
         public event EventHandler? DeviceDisconnected;
+#pragma warning restore CS0067
 
         public bool IsConnected => _device != null;
         public bool IsCapturing => _isRunning;
@@ -25,20 +28,22 @@ namespace KinectCore.Services
         /// <summary>
         /// Initialize and connect to Azure Kinect device
         /// </summary>
-        public async Task<bool> InitializeAsync(ScanConfiguration config)
+        public Task<bool> InitializeAsync(ScanConfiguration config)
         {
-            try
+            return Task.Run(() =>
             {
-                // Check for available devices
-                var deviceCount = Device.GetInstalledCount();
-                if (deviceCount == 0)
+                try
                 {
-                    ErrorOccurred?.Invoke(this, "No Azure Kinect devices found");
-                    return false;
-                }
+                    // Check for available devices
+                    var deviceCount = Device.GetInstalledCount();
+                    if (deviceCount == 0)
+                    {
+                        ErrorOccurred?.Invoke(this, "No Azure Kinect devices found");
+                        return false;
+                    }
 
-                // Open the first device
-                _device = Device.Open(0);
+                    // Open the first device
+                    _device = Device.Open(0);
                 
                 // Configure device
                 var deviceConfig = new DeviceConfiguration
@@ -64,6 +69,7 @@ namespace KinectCore.Services
                 ErrorOccurred?.Invoke(this, $"Failed to initialize Kinect: {ex.Message}");
                 return false;
             }
+            });
         }
 
         /// <summary>
