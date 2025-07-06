@@ -1,0 +1,12 @@
+C:\Users\edcorcor\VSCode\kinect3dscanner\src\FileExporter\bin\x64\Debug\net6.0\FileExporter.deps.json
+C:\Users\edcorcor\VSCode\kinect3dscanner\src\FileExporter\bin\x64\Debug\net6.0\FileExporter.dll
+C:\Users\edcorcor\VSCode\kinect3dscanner\src\FileExporter\bin\x64\Debug\net6.0\FileExporter.pdb
+C:\Users\edcorcor\VSCode\kinect3dscanner\src\FileExporter\obj\x64\Debug\net6.0\FileExporter.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\edcorcor\VSCode\kinect3dscanner\src\FileExporter\obj\x64\Debug\net6.0\FileExporter.AssemblyInfoInputs.cache
+C:\Users\edcorcor\VSCode\kinect3dscanner\src\FileExporter\obj\x64\Debug\net6.0\FileExporter.AssemblyInfo.cs
+C:\Users\edcorcor\VSCode\kinect3dscanner\src\FileExporter\obj\x64\Debug\net6.0\FileExporter.csproj.CoreCompileInputs.cache
+C:\Users\edcorcor\VSCode\kinect3dscanner\src\FileExporter\obj\x64\Debug\net6.0\FileExporter.sourcelink.json
+C:\Users\edcorcor\VSCode\kinect3dscanner\src\FileExporter\obj\x64\Debug\net6.0\FileExporter.dll
+C:\Users\edcorcor\VSCode\kinect3dscanner\src\FileExporter\obj\x64\Debug\net6.0\refint\FileExporter.dll
+C:\Users\edcorcor\VSCode\kinect3dscanner\src\FileExporter\obj\x64\Debug\net6.0\FileExporter.pdb
+C:\Users\edcorcor\VSCode\kinect3dscanner\src\FileExporter\obj\x64\Debug\net6.0\ref\FileExporter.dll

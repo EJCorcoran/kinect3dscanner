@@ -1,0 +1,13 @@
+C:\Users\edcorcor\VSCode\kinect3dscanner\src\PointCloudProcessor\bin\x64\Debug\net6.0\PointCloudProcessor.deps.json
+C:\Users\edcorcor\VSCode\kinect3dscanner\src\PointCloudProcessor\bin\x64\Debug\net6.0\PointCloudProcessor.dll
+C:\Users\edcorcor\VSCode\kinect3dscanner\src\PointCloudProcessor\bin\x64\Debug\net6.0\PointCloudProcessor.pdb
+C:\Users\edcorcor\VSCode\kinect3dscanner\src\PointCloudProcessor\obj\x64\Debug\net6.0\PointCloudProcessor.csproj.AssemblyReference.cache
+C:\Users\edcorcor\VSCode\kinect3dscanner\src\PointCloudProcessor\obj\x64\Debug\net6.0\PointCloudProcessor.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\edcorcor\VSCode\kinect3dscanner\src\PointCloudProcessor\obj\x64\Debug\net6.0\PointCloudProcessor.AssemblyInfoInputs.cache
+C:\Users\edcorcor\VSCode\kinect3dscanner\src\PointCloudProcessor\obj\x64\Debug\net6.0\PointCloudProcessor.AssemblyInfo.cs
+C:\Users\edcorcor\VSCode\kinect3dscanner\src\PointCloudProcessor\obj\x64\Debug\net6.0\PointCloudProcessor.csproj.CoreCompileInputs.cache
+C:\Users\edcorcor\VSCode\kinect3dscanner\src\PointCloudProcessor\obj\x64\Debug\net6.0\PointCloudProcessor.sourcelink.json
+C:\Users\edcorcor\VSCode\kinect3dscanner\src\PointCloudProcessor\obj\x64\Debug\net6.0\PointCloudProcessor.dll
+C:\Users\edcorcor\VSCode\kinect3dscanner\src\PointCloudProcessor\obj\x64\Debug\net6.0\refint\PointCloudProcessor.dll
+C:\Users\edcorcor\VSCode\kinect3dscanner\src\PointCloudProcessor\obj\x64\Debug\net6.0\PointCloudProcessor.pdb
+C:\Users\edcorcor\VSCode\kinect3dscanner\src\PointCloudProcessor\obj\x64\Debug\net6.0\ref\PointCloudProcessor.dll

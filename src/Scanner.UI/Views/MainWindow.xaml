@@ -1,0 +1,239 @@
+<Window x:Class="Scanner.UI.Views.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        Title="Azure Kinect 3D Scanner" Height="800" Width="1200"
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        TextElement.FontWeight="Regular"
+        TextElement.FontSize="13"
+        TextOptions.TextFormattingMode="Ideal" 
+        TextOptions.TextRenderingMode="Auto"        
+        Background="{DynamicResource MaterialDesignPaper}"
+        FontFamily="{DynamicResource MaterialDesignFont}">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <!-- Header -->
+        <materialDesign:Card Grid.Row="0" Margin="16">
+            <Grid Margin="16">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+                
+                <StackPanel Grid.Column="0">
+                    <TextBlock Text="Azure Kinect 3D Scanner" 
+                               Style="{StaticResource MaterialDesignHeadline4TextBlock}"/>
+                    <TextBlock Text="{Binding StatusMessage}" 
+                               Style="{StaticResource MaterialDesignBody2TextBlock}"
+                               Foreground="{DynamicResource MaterialDesignBodyLight}"/>
+                </StackPanel>
+
+                <StackPanel Grid.Column="1" Orientation="Horizontal">
+                    <Button Content="Settings" 
+                            Command="{Binding OpenSettingsCommand}"
+                            Style="{StaticResource MaterialDesignOutlinedButton}"
+                            Margin="0,0,8,0"/>
+                    
+                    <Button Content="Connect Camera" 
+                            Command="{Binding ConnectCameraCommand}"
+                            IsEnabled="{Binding IsConnected, Converter={StaticResource InverseBooleanConverter}}"
+                            Style="{StaticResource MaterialDesignRaisedButton}"/>
+                </StackPanel>
+            </Grid>
+        </materialDesign:Card>
+
+        <!-- Main Content -->
+        <Grid Grid.Row="1" Margin="16,0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="300"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <!-- Control Panel -->
+            <materialDesign:Card Grid.Column="0" Margin="0,0,8,0">
+                <ScrollViewer>
+                    <StackPanel Margin="16">
+                        <!-- Camera Status -->
+                        <TextBlock Text="Camera Status" 
+                                   Style="{StaticResource MaterialDesignHeadline6TextBlock}"
+                                   Margin="0,0,0,8"/>
+                        
+                        <StackPanel Orientation="Horizontal" Margin="0,0,0,16">
+                            <materialDesign:PackIcon Kind="Camera" 
+                                                     Foreground="{Binding IsConnected, Converter={StaticResource BooleanToGreenRedBrushConverter}}"/>
+                            <TextBlock Text="{Binding IsConnected, Converter={StaticResource BooleanToConnectedTextConverter}}" 
+                                       Margin="8,0,0,0"/>
+                        </StackPanel>
+
+                        <!-- Scan Controls -->
+                        <TextBlock Text="Scan Controls" 
+                                   Style="{StaticResource MaterialDesignHeadline6TextBlock}"
+                                   Margin="0,16,0,8"/>
+
+                        <Button Content="Capture Background" 
+                                Command="{Binding CaptureBackgroundCommand}"
+                                IsEnabled="{Binding IsConnected}"
+                                Style="{StaticResource MaterialDesignOutlinedButton}"
+                                HorizontalAlignment="Stretch"
+                                Margin="0,0,0,8"/>
+
+                        <Button Content="Start Scan" 
+                                Command="{Binding StartScanCommand}"
+                                IsEnabled="{Binding IsConnected}"
+                                Visibility="{Binding IsScanning, Converter={StaticResource InverseBooleanToVisibilityConverter}}"
+                                Style="{StaticResource MaterialDesignRaisedButton}"
+                                HorizontalAlignment="Stretch"
+                                Margin="0,0,0,8"/>
+
+                        <Button Content="Stop Scan" 
+                                Command="{Binding StopScanCommand}"
+                                Visibility="{Binding IsScanning, Converter={StaticResource BooleanToVisibilityConverter}}"
+                                Style="{StaticResource MaterialDesignRaisedButton}"
+                                Background="{StaticResource MaterialDesignValidationErrorBrush}"
+                                HorizontalAlignment="Stretch"
+                                Margin="0,0,0,8"/>
+
+                        <!-- Scan Progress -->
+                        <Border Visibility="{Binding IsScanning, Converter={StaticResource BooleanToVisibilityConverter}}"
+                                Background="{DynamicResource MaterialDesignDivider}"
+                                CornerRadius="4"
+                                Padding="12"
+                                Margin="0,8">
+                            <StackPanel>
+                                <TextBlock Text="Scan Progress" 
+                                           Style="{StaticResource MaterialDesignSubtitle2TextBlock}"
+                                           Margin="0,0,0,8"/>
+                                
+                                <ProgressBar Value="{Binding ScanProgress.ProgressPercentage}"
+                                             Maximum="100"
+                                             Height="8"
+                                             Margin="0,0,0,8"/>
+                                
+                                <TextBlock Text="{Binding ScanProgress.CurrentFrame, StringFormat='Frame: {0}'}"
+                                           Style="{StaticResource MaterialDesignCaptionTextBlock}"/>
+                                
+                                <TextBlock Text="{Binding ScanProgress.TotalPoints, StringFormat='Points: {0:N0}'}"
+                                           Style="{StaticResource MaterialDesignCaptionTextBlock}"/>
+                                
+                                <TextBlock Text="{Binding ScanProgress.ElapsedTime, StringFormat='Time: {0:mm\\:ss}'}"
+                                           Style="{StaticResource MaterialDesignCaptionTextBlock}"/>
+                            </StackPanel>
+                        </Border>
+
+                        <!-- Scan Configuration -->
+                        <TextBlock Text="Scan Settings" 
+                                   Style="{StaticResource MaterialDesignHeadline6TextBlock}"
+                                   Margin="0,16,0,8"/>
+
+                        <CheckBox Content="Background Removal" 
+                                  IsChecked="{Binding ScanConfig.EnableBackgroundRemoval}"
+                                  Margin="0,0,0,8"/>
+
+                        <CheckBox Content="Noise Reduction" 
+                                  IsChecked="{Binding ScanConfig.EnableNoiseReduction}"
+                                  Margin="0,0,0,8"/>
+
+                        <StackPanel Margin="0,8">
+                            <TextBlock Text="Frames to Capture" 
+                                       Style="{StaticResource MaterialDesignBody2TextBlock}"/>
+                            <Slider Value="{Binding ScanConfig.FramesToCapture}"
+                                    Minimum="10"
+                                    Maximum="500"
+                                    TickFrequency="10"
+                                    IsSnapToTickEnabled="True"
+                                    Margin="0,4"/>
+                            <TextBlock Text="{Binding ScanConfig.FramesToCapture, StringFormat={}{0} frames}"
+                                       Style="{StaticResource MaterialDesignCaptionTextBlock}"
+                                       HorizontalAlignment="Center"/>
+                        </StackPanel>
+
+                        <StackPanel Margin="0,8">
+                            <TextBlock Text="Max Depth (m)" 
+                                       Style="{StaticResource MaterialDesignBody2TextBlock}"/>
+                            <Slider Value="{Binding ScanConfig.MaxDepth}"
+                                    Minimum="0.5"
+                                    Maximum="5.0"
+                                    TickFrequency="0.1"
+                                    Margin="0,4"/>
+                            <TextBlock Text="{Binding ScanConfig.MaxDepth, StringFormat={}{0:F1}m}"
+                                       Style="{StaticResource MaterialDesignCaptionTextBlock}"
+                                       HorizontalAlignment="Center"/>
+                        </StackPanel>
+                    </StackPanel>
+                </ScrollViewer>
+            </materialDesign:Card>
+
+            <!-- Preview Area -->
+            <materialDesign:Card Grid.Column="1" Margin="8,0,0,0">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+
+                    <!-- Preview Header -->
+                    <Border Grid.Row="0" Background="{DynamicResource MaterialDesignDivider}" Padding="16,8">
+                        <TextBlock Text="Live Preview" 
+                                   Style="{StaticResource MaterialDesignSubtitle1TextBlock}"/>
+                    </Border>
+
+                    <!-- Preview Content -->
+                    <Grid Grid.Row="1">
+                        <!-- Placeholder for 3D preview -->
+                        <Border Background="{DynamicResource MaterialDesignCardBackground}"
+                                Visibility="{Binding IsConnected, Converter={StaticResource InverseBooleanToVisibilityConverter}}">
+                            <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Opacity="0.5">
+                                <materialDesign:PackIcon Kind="Camera" Height="64" Width="64" Margin="0,0,0,16"/>
+                                <TextBlock Text="Connect camera to see preview" 
+                                           Style="{StaticResource MaterialDesignSubtitle1TextBlock}"/>
+                            </StackPanel>
+                        </Border>
+
+                        <!-- Live camera feed would go here -->
+                        <Rectangle Fill="Black" 
+                                   Visibility="{Binding IsConnected, Converter={StaticResource BooleanToVisibilityConverter}}"/>
+                        
+                        <TextBlock Text="Live Camera Feed" 
+                                   HorizontalAlignment="Center" 
+                                   VerticalAlignment="Center"
+                                   Foreground="White"
+                                   Style="{StaticResource MaterialDesignHeadline6TextBlock}"
+                                   Visibility="{Binding IsConnected, Converter={StaticResource BooleanToVisibilityConverter}}"/>
+                    </Grid>
+                </Grid>
+            </materialDesign:Card>
+        </Grid>
+
+        <!-- Status Bar -->
+        <materialDesign:Card Grid.Row="2" Margin="16">
+            <Grid Margin="16,8">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+
+                <TextBlock Grid.Column="0" 
+                           Text="{Binding StatusMessage}" 
+                           Style="{StaticResource MaterialDesignCaptionTextBlock}"
+                           VerticalAlignment="Center"/>
+
+                <StackPanel Grid.Column="1" Orientation="Horizontal">
+                    <TextBlock Text="{Binding ScanHistory.Count, StringFormat='Scans: {0}'}" 
+                               Style="{StaticResource MaterialDesignCaptionTextBlock}"
+                               VerticalAlignment="Center"
+                               Margin="0,0,16,0"/>
+                    
+                    <Button Content="View History" 
+                            Style="{StaticResource MaterialDesignFlatButton}"
+                            Padding="8,4"/>
+                </StackPanel>
+            </Grid>
+        </materialDesign:Card>
+    </Grid>
+</Window>
