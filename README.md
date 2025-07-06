@@ -199,3 +199,9 @@ dotnet build --runtime win-x64 --configuration Debug
 - Device drivers are properly installed
 
 **File Output Location**: Generated files are in `output/` directory relative to execution path.
+
+### Code Quality
+
+**CS1998 Warnings**: If you see "async method lacks 'await' operators", the codebase uses `Task.Run()` for CPU-bound operations in async methods to maintain proper async patterns.
+
+**Compiler Warnings**: The project builds with zero warnings and follows C# best practices for async/await patterns.

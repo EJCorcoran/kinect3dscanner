@@ -220,19 +220,21 @@ namespace FileExporter.Services
         /// <summary>
         /// Export mesh in binary STL format
         /// </summary>
-        private async Task ExportStlBinaryAsync(Mesh mesh, string filePath)
+        private Task ExportStlBinaryAsync(Mesh mesh, string filePath)
         {
-            using var fileStream = new FileStream(filePath, FileMode.Create);
-            using var writer = new BinaryWriter(fileStream);
+            return Task.Run(() =>
+            {
+                using var fileStream = new FileStream(filePath, FileMode.Create);
+                using var writer = new BinaryWriter(fileStream);
 
-            // Header (80 bytes)
-            var header = new byte[80];
-            var headerText = Encoding.ASCII.GetBytes($"Binary STL exported from Azure Kinect 3D Scanner");
-            Array.Copy(headerText, header, Math.Min(headerText.Length, 80));
-            writer.Write(header);
+                // Header (80 bytes)
+                var header = new byte[80];
+                var headerText = Encoding.ASCII.GetBytes($"Binary STL exported from Azure Kinect 3D Scanner");
+                Array.Copy(headerText, header, Math.Min(headerText.Length, 80));
+                writer.Write(header);
 
-            // Number of triangles
-            var triangleCount = mesh.Faces.Length / 3;
+                // Number of triangles
+                var triangleCount = mesh.Faces.Length / 3;
             writer.Write((uint)triangleCount);
 
             // Triangles
@@ -268,6 +270,7 @@ namespace FileExporter.Services
                 // Attribute byte count (2 bytes, usually 0)
                 writer.Write((ushort)0);
             }
+            });
         }
 
         /// <summary>
