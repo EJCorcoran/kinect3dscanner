@@ -107,11 +107,21 @@ namespace KinectCore.Services
             if (!_kinectService.IsConnected)
                 return null;
 
-            using var capture = await _kinectService.CaptureFrameAsync();
+            var capture = await _kinectService.CaptureFrameAsync();
             if (capture == null)
                 return null;
 
-            return _kinectService.ProcessCapture(capture, _currentScan?.Configuration.EnableBackgroundRemoval ?? true);
+            try
+            {
+                // Process capture and create frame with copied data
+                var scanFrame = _kinectService.ProcessCapture(capture, _currentScan?.Configuration.EnableBackgroundRemoval ?? true);
+                return scanFrame;
+            }
+            finally
+            {
+                // Always dispose the capture after processing
+                capture.Dispose();
+            }
         }
 
         /// <summary>

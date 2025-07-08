@@ -1,0 +1,13 @@
+C:\Users\edcorcor\VSCode\kinect3dscanner\src\MeshGenerator\bin\Debug\net6.0\MeshGenerator.deps.json
+C:\Users\edcorcor\VSCode\kinect3dscanner\src\MeshGenerator\bin\Debug\net6.0\MeshGenerator.dll
+C:\Users\edcorcor\VSCode\kinect3dscanner\src\MeshGenerator\bin\Debug\net6.0\MeshGenerator.pdb
+C:\Users\edcorcor\VSCode\kinect3dscanner\src\MeshGenerator\obj\Debug\net6.0\MeshGenerator.csproj.AssemblyReference.cache
+C:\Users\edcorcor\VSCode\kinect3dscanner\src\MeshGenerator\obj\Debug\net6.0\MeshGenerator.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\edcorcor\VSCode\kinect3dscanner\src\MeshGenerator\obj\Debug\net6.0\MeshGenerator.AssemblyInfoInputs.cache
+C:\Users\edcorcor\VSCode\kinect3dscanner\src\MeshGenerator\obj\Debug\net6.0\MeshGenerator.AssemblyInfo.cs
+C:\Users\edcorcor\VSCode\kinect3dscanner\src\MeshGenerator\obj\Debug\net6.0\MeshGenerator.csproj.CoreCompileInputs.cache
+C:\Users\edcorcor\VSCode\kinect3dscanner\src\MeshGenerator\obj\Debug\net6.0\MeshGenerator.sourcelink.json
+C:\Users\edcorcor\VSCode\kinect3dscanner\src\MeshGenerator\obj\Debug\net6.0\MeshGenerator.dll
+C:\Users\edcorcor\VSCode\kinect3dscanner\src\MeshGenerator\obj\Debug\net6.0\refint\MeshGenerator.dll
+C:\Users\edcorcor\VSCode\kinect3dscanner\src\MeshGenerator\obj\Debug\net6.0\MeshGenerator.pdb
+C:\Users\edcorcor\VSCode\kinect3dscanner\src\MeshGenerator\obj\Debug\net6.0\ref\MeshGenerator.dll

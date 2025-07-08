@@ -130,7 +130,8 @@ namespace KinectCore.Services
 
             try
             {
-                using var capture = await Task.Run(() => _device.GetCapture());
+                // Return the capture without disposing it - caller is responsible for disposal
+                var capture = await Task.Run(() => _device.GetCapture());
                 return capture;
             }
             catch (Exception ex)
@@ -152,19 +153,27 @@ namespace KinectCore.Services
 
             try
             {
-                // Store original images
-                scanFrame.DepthImage = capture.Depth?.Reference();
-                scanFrame.ColorImage = capture.Color?.Reference();
+                // Create independent copies of image data to avoid disposal issues
+                if (capture.Depth != null)
+                {
+                    scanFrame.DepthImage = CreateImageCopy(capture.Depth);
+                }
+
+                if (capture.Color != null)
+                {
+                    scanFrame.ColorImage = CreateImageCopy(capture.Color);
+                }
 
                 if (capture.Depth != null && capture.Color != null)
                 {
                     // Transform color to depth camera space
-                    scanFrame.TransformedColorImage = _transformation.ColorImageToDepthCamera(capture);
+                    using var transformedColor = _transformation.ColorImageToDepthCamera(capture);
+                    scanFrame.TransformedColorImage = CreateImageCopy(transformedColor);
 
                     // Generate point cloud
                     scanFrame.PointCloud = GeneratePointCloud(
                         capture.Depth, 
-                        scanFrame.TransformedColorImage, 
+                        transformedColor, 
                         removeBackground);
                 }
             }
@@ -174,6 +183,34 @@ namespace KinectCore.Services
             }
 
             return scanFrame;
+        }
+
+        /// <summary>
+        /// Create an independent copy of a Kinect image to avoid disposal issues
+        /// </summary>
+        private Microsoft.Azure.Kinect.Sensor.Image CreateImageCopy(Microsoft.Azure.Kinect.Sensor.Image source)
+        {
+            try
+            {
+                var copy = new Microsoft.Azure.Kinect.Sensor.Image(
+                    source.Format,
+                    source.WidthPixels,
+                    source.HeightPixels,
+                    source.StrideBytes);
+
+                source.Memory.CopyTo(copy.Memory);
+                return copy;
+            }
+            catch (Exception ex)
+            {
+                ErrorOccurred?.Invoke(this, $"Image copy failed: {ex.Message}");
+                // Return a dummy image to prevent crashes
+                return new Microsoft.Azure.Kinect.Sensor.Image(
+                    source.Format,
+                    source.WidthPixels,
+                    source.HeightPixels,
+                    source.StrideBytes);
+            }
         }
 
         /// <summary>
@@ -287,10 +324,16 @@ namespace KinectCore.Services
             {
                 try
                 {
-                    using var capture = await CaptureFrameAsync();
+                    var capture = await CaptureFrameAsync();
                     if (capture != null)
                     {
+                        // Process capture and create frame with copied data before disposal
                         var scanFrame = ProcessCapture(capture);
+                        
+                        // Dispose capture immediately after processing
+                        capture.Dispose();
+                        
+                        // Fire event with the frame containing copied data
                         FrameCaptured?.Invoke(this, scanFrame);
                     }
                 }
@@ -300,6 +343,33 @@ namespace KinectCore.Services
                     await Task.Delay(100); // Brief pause before retry
                 }
             }
+        }
+
+        /// <summary>
+        /// Start live preview for UI display
+        /// </summary>
+        public async Task StartLivePreviewAsync()
+        {
+            if (_device == null)
+            {
+                throw new InvalidOperationException("Device not initialized");
+            }
+
+            if (_isRunning)
+            {
+                return; // Already running
+            }
+
+            _isRunning = true;
+            await Task.Run(async () => await CaptureLoop());
+        }
+
+        /// <summary>
+        /// Stop live preview
+        /// </summary>
+        public void StopLivePreview()
+        {
+            _isRunning = false;
         }
 
         public void Dispose()

@@ -54,10 +54,14 @@ C:\Users\edcorcor\VSCode\kinect3dscanner\src\Scanner.UI\bin\x64\Debug\net6.0-win
 C:\Users\edcorcor\VSCode\kinect3dscanner\src\Scanner.UI\bin\x64\Debug\net6.0-windows\FileExporter.pdb
 C:\Users\edcorcor\VSCode\kinect3dscanner\src\Scanner.UI\obj\x64\Debug\net6.0-windows\Scanner.UI.csproj.AssemblyReference.cache
 C:\Users\edcorcor\VSCode\kinect3dscanner\src\Scanner.UI\obj\x64\Debug\net6.0-windows\Views\MainWindow.baml
-C:\Users\edcorcor\VSCode\kinect3dscanner\src\Scanner.UI\obj\x64\Debug\net6.0-windows\App.baml
+C:\Users\edcorcor\VSCode\kinect3dscanner\src\Scanner.UI\obj\x64\Debug\net6.0-windows\Views\SettingsWindow.baml
 C:\Users\edcorcor\VSCode\kinect3dscanner\src\Scanner.UI\obj\x64\Debug\net6.0-windows\Views\MainWindow.g.cs
+C:\Users\edcorcor\VSCode\kinect3dscanner\src\Scanner.UI\obj\x64\Debug\net6.0-windows\Views\SettingsWindow.g.cs
 C:\Users\edcorcor\VSCode\kinect3dscanner\src\Scanner.UI\obj\x64\Debug\net6.0-windows\App.g.cs
+C:\Users\edcorcor\VSCode\kinect3dscanner\src\Scanner.UI\obj\x64\Debug\net6.0-windows\GeneratedInternalTypeHelper.g.cs
 C:\Users\edcorcor\VSCode\kinect3dscanner\src\Scanner.UI\obj\x64\Debug\net6.0-windows\Scanner.UI_MarkupCompile.cache
+C:\Users\edcorcor\VSCode\kinect3dscanner\src\Scanner.UI\obj\x64\Debug\net6.0-windows\Scanner.UI_MarkupCompile.lref
+C:\Users\edcorcor\VSCode\kinect3dscanner\src\Scanner.UI\obj\x64\Debug\net6.0-windows\App.baml
 C:\Users\edcorcor\VSCode\kinect3dscanner\src\Scanner.UI\obj\x64\Debug\net6.0-windows\Scanner.UI.g.resources
 C:\Users\edcorcor\VSCode\kinect3dscanner\src\Scanner.UI\obj\x64\Debug\net6.0-windows\Scanner.UI.GeneratedMSBuildEditorConfig.editorconfig
 C:\Users\edcorcor\VSCode\kinect3dscanner\src\Scanner.UI\obj\x64\Debug\net6.0-windows\Scanner.UI.AssemblyInfoInputs.cache

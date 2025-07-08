@@ -151,11 +151,15 @@ dotnet build --configuration Release --property:Platform=x64
 - Background removal and filtering
 - Platform-specific x64 builds for Azure Kinect SDK
 
-🔄 **WPF User Interface** - Basic structure implemented
-- Main window with Material Design
+🔄 **WPF User Interface** - Live camera feed implemented
+- Main window with Material Design styling
 - MVVM pattern with Community Toolkit
-- Camera connection and scanning controls
-- Missing: Settings, Preview, and Export dialogs
+- Camera connection/disconnection with real-time status
+- **Live preview with side-by-side color and depth feeds**
+- Settings dialog with camera and scan configuration options
+- Scan progress tracking with frame count, points, and elapsed time
+- Real-time image display from Azure Kinect (color BGRA32, depth grayscale)
+- Missing: Preview window for completed scans, Export dialog
 
 ## Building and Running
 
@@ -206,6 +210,25 @@ dotnet build --runtime win-x64 --configuration Debug
 - Azure Kinect DK is connected via USB 3.0
 - Azure Kinect SDK is installed
 - Device drivers are properly installed
+
+**Black Camera Feed**: If you see black rectangles instead of camera feed:
+1. **Check Camera Connection**: Ensure the green light is on the front of the Kinect
+2. **Verify USB 3.0**: Kinect requires USB 3.0 for full functionality
+3. **Check Device Manager**: Look for "Azure Kinect DK" under Cameras
+4. **Restart Application**: Disconnect and reconnect the camera in the UI
+5. **Power Cycle**: Unplug and reconnect the Kinect USB cable
+
+**Live Preview Not Working**: If color/depth feeds don't display:
+- Click "Connect Camera" button in the UI
+- Check status message for connection errors
+- Try "Disconnect" then "Connect Camera" again
+- Ensure no other applications are using the Kinect
+
+**Capture/Disposal Errors**: If you see "Cannot access a disposed object" errors:
+- **Fixed in latest version** - Capture disposal timing has been corrected
+- If still occurring, try restarting the application
+- Ensure you're using the latest build with proper capture lifecycle management
+- This was caused by premature disposal of Azure Kinect Capture objects
 
 **File Output Location**: Generated files are in `output/` directory relative to execution path.
 

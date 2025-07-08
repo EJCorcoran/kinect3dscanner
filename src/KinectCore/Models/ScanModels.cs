@@ -23,7 +23,7 @@ namespace KinectCore.Models
     /// <summary>
     /// Represents a scan frame containing depth, color, and point cloud data
     /// </summary>
-    public class ScanFrame
+    public class ScanFrame : IDisposable
     {
         public Image? DepthImage { get; set; }
         public Image? ColorImage { get; set; }
@@ -36,6 +36,13 @@ namespace KinectCore.Models
         {
             Timestamp = DateTime.UtcNow;
             CameraPose = Matrix4x4.Identity;
+        }
+
+        public void Dispose()
+        {
+            DepthImage?.Dispose();
+            ColorImage?.Dispose();
+            TransformedColorImage?.Dispose();
         }
     }
 
