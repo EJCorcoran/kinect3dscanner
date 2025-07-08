@@ -68,11 +68,15 @@ This demonstrates the complete point cloud processing pipeline without requiring
 
 ### Running the WPF Application
 
-**Note:** Requires Azure Kinect DK and SDK installed.
+**Note:** Requires Azure Kinect DK and SDK installed. This opens a GUI window (no terminal output).
 
 ```bash
+# Build first, then run the WPF GUI
+.\BuildAll.ps1
 dotnet run --project src/Scanner.UI/Scanner.UI.csproj
 ```
+
+**Troubleshooting:** If the WPF app doesn't appear to run, check for GUI windows or try the demo instead.
 
 ## Demo Files Output
 
@@ -163,16 +167,21 @@ dotnet build --configuration Release --property:Platform=x64
 
 ### Build Commands
 
-```bash
-# Complete build with demo
+```powershell
+# Complete build with demo (RECOMMENDED - shows output!)
 .\BuildAll.ps1 -Demo
 
 # Build with tests  
 .\BuildAll.ps1 -Test
 
-# Clean rebuild
+# Clean rebuild (builds but doesn't run anything)
 .\BuildAll.ps1 -Clean
+
+# Manual demo run (after building)
+dotnet run --project demo/PointCloudDemo/PointCloudDemo.csproj
 ```
+
+**⚠️ Important:** Type the commands exactly as shown above. Don't copy from VS Code links - they may include invalid references!
 
 ## Troubleshooting
 

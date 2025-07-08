@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("KinectCore.Tests")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+f0ead48e7929b29dad86efa35616c25276449e50")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+fc0c405bb7daf43f6c0d8b7aab866ccc94c92dea")]
 [assembly: System.Reflection.AssemblyProductAttribute("KinectCore.Tests")]
 [assembly: System.Reflection.AssemblyTitleAttribute("KinectCore.Tests")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
