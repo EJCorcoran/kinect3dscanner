@@ -1,9 +1,3 @@
-C:\Users\edcorcor\VSCode\kinect3dscanner\src\KinectCore\obj\x64\Debug\net6.0\win-x64\KinectCore.csproj.AssemblyReference.cache
-C:\Users\edcorcor\VSCode\kinect3dscanner\src\KinectCore\obj\x64\Debug\net6.0\win-x64\KinectCore.GeneratedMSBuildEditorConfig.editorconfig
-C:\Users\edcorcor\VSCode\kinect3dscanner\src\KinectCore\obj\x64\Debug\net6.0\win-x64\KinectCore.AssemblyInfoInputs.cache
-C:\Users\edcorcor\VSCode\kinect3dscanner\src\KinectCore\obj\x64\Debug\net6.0\win-x64\KinectCore.AssemblyInfo.cs
-C:\Users\edcorcor\VSCode\kinect3dscanner\src\KinectCore\obj\x64\Debug\net6.0\win-x64\KinectCore.csproj.CoreCompileInputs.cache
-C:\Users\edcorcor\VSCode\kinect3dscanner\src\KinectCore\obj\x64\Debug\net6.0\win-x64\KinectCore.sourcelink.json
 C:\Users\edcorcor\VSCode\kinect3dscanner\src\KinectCore\bin\x64\Debug\net6.0\win-x64\depthengine_2_0.dll
 C:\Users\edcorcor\VSCode\kinect3dscanner\src\KinectCore\bin\x64\Debug\net6.0\win-x64\k4a.dll
 C:\Users\edcorcor\VSCode\kinect3dscanner\src\KinectCore\bin\x64\Debug\net6.0\win-x64\k4arecord.dll
@@ -12,6 +6,12 @@ C:\Users\edcorcor\VSCode\kinect3dscanner\src\KinectCore\bin\x64\Debug\net6.0\win
 C:\Users\edcorcor\VSCode\kinect3dscanner\src\KinectCore\bin\x64\Debug\net6.0\win-x64\KinectCore.deps.json
 C:\Users\edcorcor\VSCode\kinect3dscanner\src\KinectCore\bin\x64\Debug\net6.0\win-x64\KinectCore.dll
 C:\Users\edcorcor\VSCode\kinect3dscanner\src\KinectCore\bin\x64\Debug\net6.0\win-x64\KinectCore.pdb
+C:\Users\edcorcor\VSCode\kinect3dscanner\src\KinectCore\obj\x64\Debug\net6.0\win-x64\KinectCore.csproj.AssemblyReference.cache
+C:\Users\edcorcor\VSCode\kinect3dscanner\src\KinectCore\obj\x64\Debug\net6.0\win-x64\KinectCore.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\edcorcor\VSCode\kinect3dscanner\src\KinectCore\obj\x64\Debug\net6.0\win-x64\KinectCore.AssemblyInfoInputs.cache
+C:\Users\edcorcor\VSCode\kinect3dscanner\src\KinectCore\obj\x64\Debug\net6.0\win-x64\KinectCore.AssemblyInfo.cs
+C:\Users\edcorcor\VSCode\kinect3dscanner\src\KinectCore\obj\x64\Debug\net6.0\win-x64\KinectCore.csproj.CoreCompileInputs.cache
+C:\Users\edcorcor\VSCode\kinect3dscanner\src\KinectCore\obj\x64\Debug\net6.0\win-x64\KinectCore.sourcelink.json
 C:\Users\edcorcor\VSCode\kinect3dscanner\src\KinectCore\obj\x64\Debug\net6.0\win-x64\KinectCore.dll
 C:\Users\edcorcor\VSCode\kinect3dscanner\src\KinectCore\obj\x64\Debug\net6.0\win-x64\refint\KinectCore.dll
 C:\Users\edcorcor\VSCode\kinect3dscanner\src\KinectCore\obj\x64\Debug\net6.0\win-x64\KinectCore.pdb

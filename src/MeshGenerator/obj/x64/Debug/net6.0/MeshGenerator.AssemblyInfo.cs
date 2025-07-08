@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("MeshGenerator")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+e27294f665fc9c76dc5385d854f5fc38ee284329")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+f0ead48e7929b29dad86efa35616c25276449e50")]
 [assembly: System.Reflection.AssemblyProductAttribute("MeshGenerator")]
 [assembly: System.Reflection.AssemblyTitleAttribute("MeshGenerator")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

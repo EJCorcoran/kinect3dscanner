@@ -200,6 +200,31 @@ dotnet build --runtime win-x64 --configuration Debug
 
 **File Output Location**: Generated files are in `output/` directory relative to execution path.
 
+### IDE and IntelliSense Issues
+
+**InitializeComponent Error**: If you see "The name 'InitializeComponent' does not exist in the current context":
+
+1. **Clean and Rebuild**:
+   ```bash
+   dotnet clean src/Scanner.UI/Scanner.UI.csproj
+   dotnet build src/Scanner.UI/Scanner.UI.csproj
+   ```
+
+2. **VS Code Reload**: Reload the window (Ctrl+Shift+P → "Developer: Reload Window")
+
+3. **Delete obj/bin folders**: Remove generated files and rebuild:
+   ```bash
+   Remove-Item -Recurse -Force src/Scanner.UI/obj, src/Scanner.UI/bin
+   dotnet build src/Scanner.UI/Scanner.UI.csproj
+   ```
+
+4. **Check XAML Compilation**: Ensure XAML files are building correctly:
+   ```bash
+   dotnet build src/Scanner.UI/Scanner.UI.csproj --verbosity normal
+   ```
+
+**IntelliSense Issues**: XAML code-behind files may show red squiggles in the editor but compile successfully. This is a known issue with VS Code's C# extension and WPF projects.
+
 ### Code Quality
 
 **CS1998 Warnings**: If you see "async method lacks 'await' operators", the codebase uses `Task.Run()` for CPU-bound operations in async methods to maintain proper async patterns.
